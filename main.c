@@ -30,10 +30,32 @@ main (int argc, char *argv[])
         return 1;
     }
 
-    // printf ("%d", argc);
-    // printf ("\n");
-    // printf ("%d", atoi(argv[1]));
-    // printf ("\n");
+    // Matriz *m;
+
+    // int linhas  = atoi (argv[1]);
+    // int colunas = atoi (argv[2]);
+
+    // m = matriz_nova (linhas, colunas);
+
+    // // Matriz *m1;
+    // // m1 = matriz_nova (linhas, colunas);
+    // matriz_preencher (m);
+    // matriz_imprimir (m);
+
+    // matriz_preencher (m);
+
+    // matriz_imprimir (m);
+    
+    // Matriz **lista = matriz_quebrar (m, 3);
+
+    // for (int i = 0; i < 3; i++)
+    //     matriz_imprimir (lista[i]);
+    
+    
+    // // printf ("%d", argc);
+    // // printf ("\n");
+    // // printf ("%d", atoi(argv[1]));
+    // // printf ("\n");
 
     Matriz *matriz1;
     Matriz *matriz2;
@@ -69,8 +91,8 @@ main (int argc, char *argv[])
         }
     }
 
-    // matriz_imprimir (matriz1);
-    // matriz_imprimir (matriz2);
+    matriz_imprimir (matriz1);
+    matriz_imprimir (matriz2);
     // matriz_imprimir (matriz3);
 
     matriz_liberar (matriz1);

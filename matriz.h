@@ -59,4 +59,6 @@ void *thread_calcular (void *dados);
 
 bool matriz_multiplicacao_possivel (Matriz *matriz1, Matriz *matriz2);
 
+Matriz **matriz_quebrar (Matriz *matriz, int quantidade);
+
 #endif /* __MATRIZ_H__ */

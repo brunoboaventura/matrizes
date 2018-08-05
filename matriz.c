@@ -76,7 +76,7 @@ matriz_alocar_memoria (Matriz *matriz)
 void
 matriz_preencher (Matriz *matriz)
 {
-    srand (time (NULL));
+    srand (time (NULL) + rand());
 
     for (register int i = 0; i < matriz->linhas; i++)
     {
@@ -98,8 +98,10 @@ matriz_imprimir (Matriz *matriz)
             printf ("%.10f\t", matriz->m[i][j]);
         }
 
-        printf ("\n\n");
+        printf ("\n");
     }
+
+    printf ("\n");
 }
 
 
@@ -284,3 +286,49 @@ matriz_multiplicacao_possivel (Matriz *matriz1, Matriz *matriz2)
 
     return false;
 }
+
+
+Matriz **matriz_quebrar (Matriz *matriz, int quantidade)                                          
+{
+
+    if (matriz->linhas < quantidade)
+    {
+        return NULL;
+    }
+    
+    Matriz **lista_retorno = (Matriz **) calloc (quantidade, sizeof(Matriz *));                   
+                                                                                                  
+    int qtd_linhas = matriz->linhas / quantidade;                                                 
+    int qtd_linhas_ultimo = qtd_linhas + (matriz->linhas % quantidade);                           
+
+    printf ("%d, %d\n", qtd_linhas, qtd_linhas_ultimo);
+
+    int i = 0;
+    for (i = 0; i < quantidade -1; i++ )
+    {
+        printf ("%d\n", i);
+        lista_retorno[i] = matriz_nova (qtd_linhas, matriz->colunas);
+    }
+    
+    lista_retorno[i] = matriz_nova (qtd_linhas_ultimo, matriz->colunas);                         
+
+    printf ("%d\n", i);
+
+
+    int linha_todo = 0;
+
+    for ( i = 0; i < quantidade; i++)
+    {
+        for (int linha = 0; linha < lista_retorno[i]->linhas; linha++)
+        {
+            for (int coluna = 0; coluna < lista_retorno[i]->colunas; coluna++)
+            {
+                lista_retorno[i]->m[linha][coluna] = matriz->m[linha_todo][coluna];
+            }
+
+            linha_todo++;
+        }
+    }
+                                                                                                  
+    return lista_retorno;                                                                         
+}                                                                                                 
